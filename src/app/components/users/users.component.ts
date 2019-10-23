@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtend = true;
   loaded = false;
+  enableAdd = false ;
   constructor() { }
 
   ngOnInit() {
@@ -23,7 +24,8 @@ export class UsersComponent implements OnInit {
             street: 'alwaha',
             city: 'nasr city',
             state: 'cairo'
-          }
+          },
+          image: 'http://lorempixel.com/600/600/people/3'
         },
         {
           firstName : 'mohamed',
@@ -33,7 +35,8 @@ export class UsersComponent implements OnInit {
             street: 'alwaha',
             city: 'nasr city',
             state: 'cairo'
-          }
+          },
+          image: 'http://lorempixel.com/600/600/people/2'
         },
         {
           firstName : 'ahmed',
@@ -43,7 +46,8 @@ export class UsersComponent implements OnInit {
             street: 'alwaha',
             city: 'nasr city',
             state: 'cairo'
-          }
+          },
+          image: 'http://lorempixel.com/600/600/people/1'
         }
       ];
 
