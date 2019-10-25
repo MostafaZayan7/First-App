@@ -1,7 +1,7 @@
 <h1>users</h1>
 <button [ngClass]="currentClasses" [disabled]="!enableAdd" class="btn btn-block mb-3">Add New User</button>
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
-    <li [class.bg-dark]="user.isActive" class="card card-body mb-2" *ngFor="let user of users">
+    <li [style.border-color]="user.isActive ? 'green' : 'red'" [class.bg-warning]="user.isActive" class="card card-body mb-2" *ngFor="let user of users">
         <div class="row">
             <div class="col-sm-4">
                 <img *ngIf="user.image" [src]="user.image" class="img-fluid" alt="">
