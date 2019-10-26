@@ -9,7 +9,6 @@ import { User } from './../../models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  showExtend = false;
   loaded = false;
   enableAdd = true ;
   currentClasses = {};
@@ -29,7 +28,8 @@ export class UsersComponent implements OnInit {
             state: 'cairo'
           },
           isActive: true,
-          registered: new Date('01/02/2018 08:30:00')
+          registered: new Date('01/02/2018 08:30:00'),
+          hide: true
         },
         {
           firstName : 'mohamed',
@@ -41,7 +41,8 @@ export class UsersComponent implements OnInit {
             state: 'cairo'
           },
 
-          registered: new Date('01/03/2017 05:30:00')
+          registered: new Date('01/03/2017 05:30:00'),
+          hide: true
         },
         {
           firstName : 'ahmed',
@@ -53,7 +54,8 @@ export class UsersComponent implements OnInit {
             state: 'cairo'
           },
 
-          registered: new Date('03/05/2016 07:20:00')
+          registered: new Date('03/05/2016 07:20:00'),
+          hide: true
         }
       ];
 
