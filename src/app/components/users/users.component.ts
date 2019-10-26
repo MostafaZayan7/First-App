@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   loaded = false;
   enableAdd = true ;
   currentClasses = {};
+  currentStyle = {};
 
   constructor() { }
 
@@ -28,7 +29,9 @@ export class UsersComponent implements OnInit {
             state: 'cairo'
           },
           image: 'http://lorempixel.com/600/600/people/3',
-          isActive: true
+          isActive: true,
+          balance:  100,
+          registered: new Date('01/02/2018 08:30:00')
         },
         {
           firstName : 'mohamed',
@@ -39,7 +42,9 @@ export class UsersComponent implements OnInit {
             city: 'nasr city',
             state: 'cairo'
           },
-          image: 'http://lorempixel.com/600/600/people/2'
+          image: 'http://lorempixel.com/600/600/people/2',
+          balance:  200,
+          registered: new Date('01/03/2017 05:30:00')
         },
         {
           firstName : 'ahmed',
@@ -50,13 +55,16 @@ export class UsersComponent implements OnInit {
             city: 'nasr city',
             state: 'cairo'
           },
-          image: 'http://lorempixel.com/600/600/people/1'
+          image: 'http://lorempixel.com/600/600/people/1',
+          balance:  300,
+          registered: new Date('03/05/2016 07:20:00')
         }
       ];
 
       this.loaded = true;
 
       this.setCurrentClasses();
+      this.setCurrentStyle();
 
       this.addUser({
       firstName : 'ali',
@@ -72,7 +80,11 @@ export class UsersComponent implements OnInit {
     this.currentClasses = {
       'btn-success': this.enableAdd
     };
-
+  }
+  setCurrentStyle() {
+    this.currentStyle = {
+      'padding-top' : this.showExtend ? '0' : '140px'
+    };
   }
 
 }
