@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   enableAdd = true ;
   currentClasses = {};
   currentStyle = {};
+  showUserForm = false;
 
   constructor() { }
 
@@ -66,5 +67,13 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
+  onSubmit(e) {
+    console.log(123);
+    e.preventDefault();
+  }
+
+  fireEvent(e) {
+    console.log(e.target.value);
+  }
 
 }
