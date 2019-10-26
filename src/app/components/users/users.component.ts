@@ -9,7 +9,7 @@ import { User } from './../../models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  showExtend = true;
+  showExtend = false;
   loaded = false;
   enableAdd = true ;
   currentClasses = {};
@@ -58,15 +58,11 @@ export class UsersComponent implements OnInit {
       ];
 
       this.loaded = true;
-
-
-
   }
 
   addUser(user: User) {
     this.users.push(user);
   }
-
 
 
 }
