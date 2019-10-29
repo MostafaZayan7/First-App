@@ -11,22 +11,9 @@
       <input [(ngModel)]="user.lastName" type="text" class="form-control" name="lastName">
     </div>
     <div class="form-group">
-      <label>Age</label>
-      <input [(ngModel)]="user.age" type="number" class="form-control" name="Age">
+      <label>Email</label>
+      <input [(ngModel)]="user.email" type="text" class="form-control" name="email">
     </div>
-    <div class="form-group">
-      <label>Street Address</label>
-      <input [(ngModel)]="user.address.street" type="text" class="form-control" name="street">
-    </div>
-    <div class="form-group">
-      <label>City</label>
-      <input [(ngModel)]="user.address.city" type="text" class="form-control" name="city">
-    </div>
-    <div class="form-group">
-      <label>State</label>
-      <input [(ngModel)]="user.address.state" type="text" class="form-control" name="state">
-    </div>
-
     <button (click)="addUser()" [ngClass]="currentClasses" [disabled]="user.firstName== '' || user.lastName== ''" class="btn btn-block btn-dark mb-3">Add New User</button>
 
   </form>
@@ -35,10 +22,9 @@
 
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
     <li [class.bg-light]="user.isActive" class="card card-body mb-2" *ngFor="let user of users">
-                <h3 [ngStyle]="currentStyle">{{user.firstName}} {{user.lastName}} <small *ngIf="user.age && user.address"><button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm"><i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
-              <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
-                  <li class="list-group-item">age : {{user.age}}</li>
-                  <li class="list-group-item">address : {{user.address.street}} {{user.address.city}} , {{user.address.state}}</li>
+                <h3 [ngStyle]="currentStyle">{{user.firstName}} {{user.lastName}} <small><button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm"><i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
+              <ul class="list-group" *ngIf="!user.hide">
+                  <li class="list-group-item">Email : {{user.email}}</li>
                   <li class="list-group-item">Registered : {{user.registered | date:"mm/dd/yyyy"}}</li>
                 </ul>
     </li>
