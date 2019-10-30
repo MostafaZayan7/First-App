@@ -1,13 +1,85 @@
-<h1>users</h1>
-<button [ngClass]="currentClasses" [disabled]="!enableAdd" class="btn btn-block btn-dark mb-3">Add New User</button>
+<button (click)="showUserForm =! showUserForm" class="btn btn-dark mb-3 mt-3">Add User</button>
+<div class="card card-body mb-3" *ngIf="showUserForm">
+  <h2>Add User</h2>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input 
+      [(ngModel)]="user.firstName" 
+      [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}"
+      type="text" 
+      class="form-control" 
+      name="firstName"
+      #userFirstName="ngModel"
+      required
+      minlength="2"
+      >
+      <div [hidden]="!userFirstName.errors?.required"
+           class="invalid-feedback">
+           First Name Is Required
+      </div>
+      <div [hidden]="!userFirstName.errors?.minlength"
+           class="invalid-feedback">
+           Must Be At Least 2 Characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input 
+      [(ngModel)]="user.lastName" 
+      [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}"
+      type="text" 
+      class="form-control" 
+      name="lastName"
+      #userLastName="ngModel"
+      required
+      minlength="2"
+      >
+      <div [hidden]="!userLastName.errors?.required"
+           class="invalid-feedback">
+           Last Name Is Required
+      </div>
+      <div [hidden]="!userLastName.errors?.minlength"
+           class="invalid-feedback">
+           Must Be At Least 2 Characters
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Email</label>
+        <input 
+        [(ngModel)]="user.email" 
+        [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
+        type="text" 
+        class="form-control" 
+        name="email"
+        #userEmail="ngModel"
+        required
+        pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        >
+        <div [hidden]="!userEmail.errors?.required"
+             class="invalid-feedback">
+             Email Name Is Required
+        </div>
+        <div [hidden]="!userEmail.errors?.pattern"
+             class="invalid-feedback">
+             Email Is Not Valid
+        </div>
+      </div>
+    <button (click)="addUser()" [ngClass]="currentClasses" [disabled]="user.firstName== '' || user.lastName== ''" class="btn btn-block btn-dark mb-3">Add New User</button>
+
+  </form>
+</div>
+
+
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
-    <li [style.border-color]="user.isActive ? 'green' : 'red'" [class.bg-light]="user.isActive" class="card card-body mb-2" *ngFor="let user of users">
-                <h3 [ngStyle]="currentStyle">{{user.firstName | uppercase}} {{user.lastName | uppercase}}</h3>
-              <ul class="list-group" *ngIf="showExtend && user.age && user.address">
-                  <li class="list-group-item">age : {{user.age}}</li>
-                  <li class="list-group-item">address : {{user.address.street}} {{user.address.city}} , {{user.address.state}}</li>
+    <li [class.bg-light]="user.isActive" class="card card-body mb-2" *ngFor="let user of users">
+                <h3 [ngStyle]="currentStyle">{{user.firstName}} {{user.lastName}} <small><button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm"><i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
+              <ul class="list-group" *ngIf="!user.hide">
+                  <li class="list-group-item">Email : {{user.email}}</li>
                   <li class="list-group-item">Registered : {{user.registered | date:"mm/dd/yyyy"}}</li>
                 </ul>
     </li>
 </ul>
-<button [ngClass]="currentClasses" [disabled]="!enableAdd" class="btn btn-block mb-3">Add New User</button>
