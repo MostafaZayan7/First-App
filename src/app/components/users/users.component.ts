@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   currentClasses = {};
   currentStyle = {};
   showUserForm = false;
-  @ViewChild('userForm') form: any;
+  @ViewChild('userForm', null) form: any;
 
   constructor() { }
 
