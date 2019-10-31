@@ -15,15 +15,14 @@ import { DataService } from './services/data.service';
     AppComponent,
     UserComponent,
     UsersComponent,
-    NavbarComponent,
-    DataService
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
